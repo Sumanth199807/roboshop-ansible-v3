@@ -1,8 +1,8 @@
-- name: "copy {{ component }} service"
-  template:
-    src: "{{ component }}.service.j2"
-    dest: "/etc/systemd/system/{{ component }}.service"
-- name: deamon reload
-  systemd_service:
-    name: "{{ component }}"
-    daemon_reload: true
+- name: Demo Role
+  debug:
+    msg: "Hi, I am from Demo role tasks"
+  # this should load another role called common
+- name: import common role
+  import_role:
+    name: common
+    tasks_from: hello.yaml
